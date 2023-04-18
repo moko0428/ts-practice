@@ -1,19 +1,23 @@
-interface Person {
+type Person = {
   name: string;
-  age?: number; //?의 의미는 설정을 해도 되고 안해도 되는 값으로 선택 옵션.
-}
-interface Developer extends Person {
-  //interface를 extends해서 상속받기
+  age?: number;
+};
+//&는 Intersection으로서 두개 이상의 타입들을 합쳐준다.
+type Developer = Person & {
   skills: string[];
-}
+};
 
 const person: Person = {
-  name: "이준영",
-  age: 25,
+  name: "김사람",
 };
-
 const expert: Developer = {
-  name: "이개발",
+  name: "김개발",
   skills: ["javascript", "react"],
 };
-const people: Person[] = [person, expert];
+
+type People = Person[];
+const people: People = [person, expert];
+
+type Color = "red" | "orange" | "yellow";
+const color: Color = "red";
+const colors: Color[] = ["red", "orange"];
